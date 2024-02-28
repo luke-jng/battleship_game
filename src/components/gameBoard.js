@@ -42,18 +42,20 @@ const gameBoard = (cols, rows) => {
                     }
                 }
             }
-            if (unusedTiles == true && enoughTiles == true) {
+            if (unusedTiles == true && enoughTiles == true) { //place ship on board
                 for (let i = 0; i < ships[shipType].getShipLength(); i++) {
                     _board[row][col+i].shipType = shipType;
                 }
+                return true;
             }
-            else {
+            else {                                            //don't place ship on board, print error
                 if (unusedTiles == false) {
                     console.log('PICK SOMEWHERE ELSE, TILES ARE ALREADY USED')
                 }
                 if (enoughTiles == false) {
                     console.log('PICK SOMEHWERE ELSE, NOT ENOUGH TILES!')
                 }
+                return false;
             }
         }
 
@@ -74,6 +76,7 @@ const gameBoard = (cols, rows) => {
                 for (let i = 0; i < ships[shipType].getShipLength(); i++) {
                     _board[row+i][col].shipType = shipType;
                 }
+                return true;
             }
             else {
                 if (unusedTiles == false) {
@@ -82,6 +85,7 @@ const gameBoard = (cols, rows) => {
                 if (enoughTiles == false) {
                     console.log('PICK SOMEHWERE ELSE, NOT ENOUGH TILES!')
                 }
+                return false;
             }
         }
     }
@@ -101,7 +105,7 @@ const gameBoard = (cols, rows) => {
                     if (!tile.tileAttacked) {   // if tile not hit, push [ ]
                         currRow.push('[ ]');
                     } else {                    // if tile hit, push [M]
-                        currRow.push('[m]');
+                        currRow.push('[M]');
                     }
                 }
             }
@@ -109,23 +113,43 @@ const gameBoard = (cols, rows) => {
         }
     }
 
-    // const receiveAttack = (yCoords, xCoords) => {
-    //     if (_board[yCoords][xCoords].tileAttacked == false) {
-    //         if (_board[yCoords][xCoords].shipType == 'None') {
-    //             _board[yCoords][xCoords].tileAttacked = true;
-    //         } else {
-    //             _board[yCoords][xCoords].tileAttacked = true;
-    //             ships[_board[yCoords][xCoords].shipType].isHit();
-    //             if (ships[_board[yCoords][xCoords].shipType].isSunk()) {
-    //                 _sunkenShips++;
-    //             }
-    //         }
-    //     } else {
-    //         console.log("tile already attacked, select another one")
-    //     }
+    const receiveAttack = (xCoords, yCoords) => {
+        if (_board[yCoords][xCoords].tileAttacked == false) {
+            console.log(`tile at coords [${yCoords}, ${xCoords}] has been hit`)
+            if (_board[yCoords][xCoords].shipType == 'None') { //if tile has no ship
+                _board[yCoords][xCoords].tileAttacked = true;   //update tile hit status
+                _missAttacks++;                                 //update missed attack count
+                console.log('the missile missed.')
+            } else {                                            //if tile has ship
+                _board[yCoords][xCoords].tileAttacked = true;   //update tile hit status
+                ships[_board[yCoords][xCoords].shipType].isHit();   //add hit damage to ship on tile
+                if (ships[_board[yCoords][xCoords].shipType].isSunk()) {   //check/ if ship is sunk
+                    _sunkenShips++;                                         //increment sunken ships
+                }
+                console.log('the missile hit a ship!')
+            }
+            return true;
+        } else {
+            console.log("tile already attacked, select another one")
+            return false;
+        }
 
-    // }
-    return {_board, printBoard, placeShip}
+    }
+
+    const isAllShipSunk = () => {
+        if (_sunkenShips >= 5) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    const getMissedAttacks = () => {
+        return _missAttacks;
+    }
+
+    return {printBoard, placeShip, receiveAttack, isAllShipSunk, getMissedAttacks}
 }
 
 export { gameBoard }

@@ -26,3 +26,15 @@ gb.printBoard();
 console.log("                       ");
 gb.placeShip(1,1, "cruiser", "vertical");
 gb.printBoard();
+
+// gb.receiveAttack(1,1);
+// gb.printBoard();
+
+if (gb.receiveAttack(1,1)) {
+    gb.printBoard();
+}
+
+gb.receiveAttack(2,1);
+gb.printBoard();
+
+console.log(gb.isAllShipSunk())
