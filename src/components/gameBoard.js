@@ -1,8 +1,12 @@
-import { Ship } from './ship.js'
+import Ship from "./ship";
 
 const gameBoard = (cols, rows) => {
     let _cols = cols;
     let _rows = rows;
+
+    const getSize = () => {
+        return [_cols, _rows]
+    }
 
     const genBoard = () => {
         let boardArray = []
@@ -90,6 +94,10 @@ const gameBoard = (cols, rows) => {
         }
     }
 
+    const getBoard = () => {
+        return _board;
+    }
+
     const printBoard = () => {
         for (const row of _board) {
             let currRow = []
@@ -149,7 +157,7 @@ const gameBoard = (cols, rows) => {
         return _missAttacks;
     }
 
-    return {printBoard, placeShip, receiveAttack, isAllShipSunk, getMissedAttacks}
+    return {getSize, getBoard, printBoard, placeShip, receiveAttack, isAllShipSunk, getMissedAttacks}
 }
 
-export { gameBoard }
+export default gameBoard

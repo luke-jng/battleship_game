@@ -27,4 +27,4 @@ const Ship = (shipType, shipLength) => {
 };
 
 
-export { Ship }
+export default Ship
