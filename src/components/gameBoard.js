@@ -120,8 +120,8 @@ const gameBoard = (cols, rows) => {
             console.log(currRow);
         }
     }
-
-    const receiveAttack = (xCoords, yCoords) => {
+    //yis row, x is col
+    const receiveAttack = (yCoords, xCoords) => {
         if (_board[yCoords][xCoords].tileAttacked == false) {
             console.log(`tile at coords [${yCoords}, ${xCoords}] has been hit`)
             if (_board[yCoords][xCoords].shipType == 'None') { //if tile has no ship

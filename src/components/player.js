@@ -19,8 +19,10 @@ const Player = (turnBool, cpuBool) => {
         if (_ifCPU == true) {
             // generate random coords for attack
             let boardSize = targetGameBoard.getSize();
-            let randomXCoord = Math.floor(Math.random * boardSize[0]);
-            let randomYCoord = Math.floor(Math.random * boardSize[1]);
+            console.log(boardSize[0], boardSize[1])
+            let randomXCoord = Math.floor(Math.random() * boardSize[0]);
+            let randomYCoord = Math.floor(Math.random() * boardSize[1]);
+            console.log(randomXCoord, randomYCoord);
             while (targetGameBoard.receiveAttack(randomXCoord, randomYCoord) == false) { //if attack is not legal
                 // randomize attack coords again
                 randomXCoord = Math.floor(Math.random * boardSize[0]);
