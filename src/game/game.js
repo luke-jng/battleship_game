@@ -67,13 +67,17 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
             currentCell.addEventListener("click", () => {
                 console.log(`TILE p2_tile${row}${col} HAS BEEN CLICKED!`)
                 if (player1.checkIfTurn() == true) {
-                    player1.attack(row, col, p2_gameboard);
-                    console.log(`TILE ${row}${col} has been hit`)
-                    //RENDER ATTACK
-                    renderTables("p2", p2_gameboard);
-                    //UPDATE TURN 
-                    player1.updateTurn();
-                    player2.updateTurn();
+                    if (player1.attack(row, col, p2_gameboard) == true) { // attack is legal and enacted
+                        console.log(`TILE ${row}${col} has been hit`)
+                        //RENDER ATTACK
+                        renderTables("p2", p2_gameboard);
+                        //UPDATE TURN 
+                        player1.updateTurn();
+                        player2.updateTurn();
+                    } else {
+                        console.log("TRY ANOTHER TILE");
+                    }
+
 
 
 

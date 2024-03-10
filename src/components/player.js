@@ -13,7 +13,11 @@ const Player = (turnBool, cpuBool) => {
         }
     }
     const attack = (rowNum, colNum, targetGameBoard) => {
-        targetGameBoard.receiveAttack(rowNum, colNum);
+        if (targetGameBoard.receiveAttack(rowNum, colNum) == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
     const cpuAttack = (targetGameBoard) => {
         if (_ifCPU == true) {
@@ -25,8 +29,8 @@ const Player = (turnBool, cpuBool) => {
             console.log(randomXCoord, randomYCoord);
             while (targetGameBoard.receiveAttack(randomXCoord, randomYCoord) == false) { //if attack is not legal
                 // randomize attack coords again
-                randomXCoord = Math.floor(Math.random * boardSize[0]);
-                randomYCoord = Math.floor(Math.random * boardSize[1]);
+                randomXCoord = Math.floor(Math.random() * boardSize[0]);
+                randomYCoord = Math.floor(Math.random() * boardSize[1]);
                 // loop will iterate until receveAttack returns true and breaks
             }
         } else {
