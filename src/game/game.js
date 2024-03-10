@@ -110,6 +110,22 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
     //         console.log("CPU ATTACK END")
     //     } 
     // }
+    const gameLoop = setInterval(() => {
+        console.log("INTERVAL RUNNING")
+        if (p1_gameboard.isAllShipSunk() == false && p2_gameboard.isAllShipSunk() == false){
+            if (player2.checkIfTurn() == true) {
+                console.log("CPUT ATTACK START")
+                player2.cpuAttack(p1_gameboard); //randomly attacks the playerboard
+                player2.updateTurn() // set cpu turn to false, 
+                player1.updateTurn() // set player turn to true,
+                renderTables("p1", p1_gameboard); // render player board after cpu attack
+                console.log("CPU ATTACK END")
+            } 
+        } else {
+            console.log("INTERVAL ENDING")
+            clearInterval(gameLoop)
+        }
+    }, 1000)
 }
 
 
