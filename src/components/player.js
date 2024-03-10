@@ -12,8 +12,8 @@ const Player = (turnBool, cpuBool) => {
             _currTurn = false;
         }
     }
-    const attack = (xCoords, yCoords, targetGameBoard) => {
-        targetGameBoard.receiveAttack(xCoords, yCoords);
+    const attack = (rowNum, colNum, targetGameBoard) => {
+        targetGameBoard.receiveAttack(rowNum, colNum);
     }
     const cpuAttack = (targetGameBoard) => {
         if (_ifCPU == true) {

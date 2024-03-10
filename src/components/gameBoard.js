@@ -121,17 +121,17 @@ const gameBoard = (cols, rows) => {
         }
     }
     //yis row, x is col
-    const receiveAttack = (yCoords, xCoords) => {
-        if (_board[yCoords][xCoords].tileAttacked == false) {
-            console.log(`tile at coords [${yCoords}, ${xCoords}] has been hit`)
-            if (_board[yCoords][xCoords].shipType == 'None') { //if tile has no ship
-                _board[yCoords][xCoords].tileAttacked = true;   //update tile hit status
+    const receiveAttack = (rowNum, colNum) => {
+        if (_board[rowNum][colNum].tileAttacked == false) {
+            console.log(`tile at coords [${rowNum}, ${colNum}] has been hit`)
+            if (_board[rowNum][colNum].shipType == 'None') { //if tile has no ship
+                _board[rowNum][colNum].tileAttacked = true;   //update tile hit status
                 _missAttacks++;                                 //update missed attack count
                 console.log('the missile missed.')
             } else {                                            //if tile has ship
-                _board[yCoords][xCoords].tileAttacked = true;   //update tile hit status
-                ships[_board[yCoords][xCoords].shipType].isHit();   //add hit damage to ship on tile
-                if (ships[_board[yCoords][xCoords].shipType].isSunk()) {   //check/ if ship is sunk
+                _board[rowNum][colNum].tileAttacked = true;   //update tile hit status
+                ships[_board[rowNum][colNum].shipType].isHit();   //add hit damage to ship on tile
+                if (ships[_board[rowNum][colNum].shipType].isSunk()) {   //check/ if ship is sunk
                     _sunkenShips++;                                         //increment sunken ships
                 }
                 console.log('the missile hit a ship!')
