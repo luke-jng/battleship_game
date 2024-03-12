@@ -1,9 +1,77 @@
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 td {
     height: 30px;
     width: 30px;
 
+}
+
+td:hover {
+    border: 1px solid black;
+}
+
+
+#ships {
+    background-color: aqua;
+}
+
+#battleship_piece {
+    width: 120px;
+    height: 30px
+}
+
+#battleship_piece_vertical {
+    width: 30px;
+    height: 120px
+}
+
+#carrier_piece {
+    width: 150px;
+    height: 30px
+}
+
+#carrier_piece_vertical {
+    height: 150px;
+    width: 30px
+}
+
+
+#cruiser_piece {
+    width: 90px;
+    height: 30px
+}
+
+#cruiser_piece_vertical {
+    height: 90px;
+    width: 30px
+}
+
+#patrolboat_piece {
+    width: 60px;
+    height: 30px
+}
+
+#patrolboat_piece_vertical {
+    height: 60px;
+    width: 30px
+}
+
+#submarine_piece {
+    width: 90px;
+    height: 30px
+}
+
+#submarine_piece_vertical {
+    height: 90px;
+    width: 30px
+}
+
+.draggable {
+    background-color: green;
+}
+
+.draggable.dragging {
+    opacity: 0.3;
 }

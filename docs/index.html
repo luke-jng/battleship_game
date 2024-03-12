@@ -133,6 +133,9 @@
             </tr>
         </table>
     </div>
+    <br>
+    <br>
+    <br>
     <div id="p1_board">
         <table id="p1_gameboard">
             <tr>
@@ -255,11 +258,16 @@
                 <td id="p1_tile98"></td>
                 <td id="p1_tile99"></td>
             </tr>
+        </table>
     </div>
     <div id="ships">
-
+        <div id="battleship_piece" class="draggable" draggable="true" data-axis="horizontal" data-shiptype="battleship">battleship</div>
+        <div id="carrier_piece" class="draggable" draggable="true" data-axis="horizontal" data-shiptype="carrier">carrier</div>
+        <div id="cruiser_piece" class="draggable" draggable="true" data-axis="horizontal" data-shiptype="cruiser">cruiser</div>
+        <div id="patrolboat_piece" class="draggable" draggable="true" data-axis="horizontal" data-shiptype="patrolBoat">patrolBoat</div>
+        <div id="submarine_piece" class="draggable" draggable="true" data-axis="horizontal" data-shiptype="submarine">submarine</div>
     </div>
-    <button id="flip"></button>
-    <button id="start_game"></button>
+    <button id="flip" value="flip">FLIP</button>
+    <button id="start_game" value="start game">START GAME</button>
 </body>
 </html>
