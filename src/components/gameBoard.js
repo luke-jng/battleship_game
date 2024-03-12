@@ -29,6 +29,7 @@ const gameBoard = (cols, rows) => {
         "patrolBoat": Ship('patrolBoat', 2),
         "submarine": Ship('submarine', 3),
     }
+    let _placedShips = 0;
     let _sunkenShips = 0;
     let _missAttacks = 0;
 
@@ -50,6 +51,7 @@ const gameBoard = (cols, rows) => {
                 for (let i = 0; i < ships[shipType].getShipLength(); i++) {
                     _board[row][col+i].shipType = shipType;
                 }
+                _placedShips++;
                 return true;
             }
             else {                                            //don't place ship on board, print error
@@ -80,6 +82,7 @@ const gameBoard = (cols, rows) => {
                 for (let i = 0; i < ships[shipType].getShipLength(); i++) {
                     _board[row+i][col].shipType = shipType;
                 }
+                _placedShips++;
                 return true;
             }
             else {
@@ -153,11 +156,20 @@ const gameBoard = (cols, rows) => {
         }
     }
 
+    const isAllShipPlaced = () => {
+        if (_placedShips >= 5) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     const getMissedAttacks = () => {
         return _missAttacks;
     }
 
-    return {getSize, getBoard, printBoard, placeShip, receiveAttack, isAllShipSunk, getMissedAttacks}
+    return {getSize, getBoard, printBoard, placeShip, receiveAttack, isAllShipSunk, isAllShipPlaced, getMissedAttacks}
 }
 
 export default gameBoard
