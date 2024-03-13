@@ -19,7 +19,7 @@ const Ship = (shipType, shipLength) => {
 
     const isSunk = () => {
         if (_shipDamage >= _shipLength) {
-            _shipSunk == true;
+            _shipSunk = true;
         } 
         return _shipSunk;
     }

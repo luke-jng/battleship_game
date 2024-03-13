@@ -53,6 +53,7 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
     // KEEP THE GAME LOOPING UNTIL A VICTOR IS IDENTIFIED IE ONE OF THE GAMEBOARD'S HAS THEIR SHIPS FULLY SUNK
     const gameLoop = setInterval(() => {
         console.log("INTERVAL RUNNING")
+        console.log(p1_gameboard.isAllShipSunk(), p2_gameboard.isAllShipSunk())
         if (p1_gameboard.isAllShipSunk() == false && p2_gameboard.isAllShipSunk() == false){
             if (player2.checkIfTurn() == true) {
                 console.log("CPUT ATTACK START")
@@ -63,6 +64,12 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
                 console.log("CPU ATTACK END")
             } 
         } else {
+            if (p1_gameboard.isAllShipSunk() == true) {
+                console.log("PLAYER 2 WINS")
+            }
+            if (p2_gameboard.isAllShipSunk() == true) {
+                console.log("PLAYER 1 WINS")
+            }
             console.log("INTERVAL ENDING")
             clearInterval(gameLoop)
         }
