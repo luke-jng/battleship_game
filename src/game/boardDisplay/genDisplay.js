@@ -23,13 +23,13 @@ const genShipPiecesDisplay = () => {
         currPieceDiv.dataset.axis = "horizontal";
         currPieceDiv.dataset.shiptype = `${shipTypeData}`
         currPieceDiv.innerText = divText;
-        return genPieceDiv;
+        return currPieceDiv;
     }
     let battleshipPieceDiv = genPieceDiv("battleship_piece", "battleship", "battleship")
     let carrierPieceDiv = genPieceDiv("carrier_piece", "carrier", "carrier")
-    let cruiserPieceDiv = genPieceDiv("battleship_piece", "cruiser", "cruiser")
-    let patrolBoatPieceDiv = genPieceDiv("battleship_piece", "patrolBoat", "patrolBoat")
-    let submarinePieceDiv = genPieceDiv("battleship_piece", "submarine", "submarine")
+    let cruiserPieceDiv = genPieceDiv("cruiser_piece", "cruiser", "cruiser")
+    let patrolBoatPieceDiv = genPieceDiv("patrolboat_piece", "patrolBoat", "patrolBoat")
+    let submarinePieceDiv = genPieceDiv("submarine_piece", "submarine", "submarine")
 
     shipContainer.append(
         battleshipPieceDiv,
@@ -39,3 +39,5 @@ const genShipPiecesDisplay = () => {
         submarinePieceDiv
     )
 }
+
+export { genBoardDisplay, genShipPiecesDisplay }

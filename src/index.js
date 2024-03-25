@@ -3,6 +3,7 @@ import Player from "./components/player";
 import gameBoard from "./components/gameBoard";
 import loadGame from "./game/game";
 import { renderDragItems, renderDragOnTables, renderTables } from "./game/boardDisplay/renderEffects";
+import { genBoardDisplay, genShipPiecesDisplay } from "./game/boardDisplay/genDisplay";
 
 
 const testingFunc = function(){
@@ -14,6 +15,7 @@ const testingFunc = function(){
     //randomly generate ship placement for player 2 gameboard
     p2.cpuGenShipPlacement(p2gb);
 
+    genShipPiecesDisplay();
 
     const flipShipAxis = () => {
         let flipButton = document.getElementById('flip');
