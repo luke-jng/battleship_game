@@ -1,3 +1,4 @@
+// renders tables
 const renderTables = (playerNum, currentGameBoard) => {
     let currentTable = document.getElementById(`${playerNum}_gameboard`);
 
@@ -22,7 +23,7 @@ const renderTables = (playerNum, currentGameBoard) => {
     }
 }
 
-
+// renders the dragged ship while it is being dragged
 const renderDragItems = () => {
     let allDraggableItems = document.querySelectorAll(".draggable");
     allDraggableItems.forEach(item => {
@@ -34,10 +35,13 @@ const renderDragItems = () => {
         })
     })
 }
+
+// this function removes ships from standby board after placing on gameboard
 const removePlacedShip = (currDivElem) => {
     currDivElem.parentNode.removeChild(currDivElem);
 }
 
+//renders hover effect on dragged ships over gameboard
 const renderDragOnTables = (playerNum, currentGameBoard) => {
     for (let row=0; row < currentGameBoard.getSize()[1]; row++){
         for (let col=0; col<currentGameBoard.getSize()[0]; col++){
