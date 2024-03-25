@@ -1,29 +1,31 @@
+import { renderTables } from "./boardDisplay/renderEffects";
+
 const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
 
         //render tables
-    const renderTables = (playerNum, currentGameBoard) => {
-        let currentTable = document.getElementById(`${playerNum}_gameboard`);
+    // const renderTables = (playerNum, currentGameBoard) => {
+    //     let currentTable = document.getElementById(`${playerNum}_gameboard`);
     
-        for (let i = 0, row; row = currentTable.rows[i]; i++) {
-            for (let j = 0, tile; tile = row.cells[j]; j++) {
-                if (currentGameBoard.getBoard()[i][j].shipType == "None") {
-                    if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
-                        tile.style.backgroundColor = "yellow";
-                    } else {
-                        tile.style.backgroundColor = "black";
-                    }
-                }
-                else {
-                    if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
-                        tile.style.backgroundColor = "green";
-                    } else {
-                        tile.style.backgroundColor = "red";
-                    }
-                }
-                console.log("LOOP WORKING")
-            }
-        }
-    }
+    //     for (let i = 0, row; row = currentTable.rows[i]; i++) {
+    //         for (let j = 0, tile; tile = row.cells[j]; j++) {
+    //             if (currentGameBoard.getBoard()[i][j].shipType == "None") {
+    //                 if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
+    //                     tile.style.backgroundColor = "yellow";
+    //                 } else {
+    //                     tile.style.backgroundColor = "black";
+    //                 }
+    //             }
+    //             else {
+    //                 if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
+    //                     tile.style.backgroundColor = "green";
+    //                 } else {
+    //                     tile.style.backgroundColor = "red";
+    //                 }
+    //             }
+    //             console.log("LOOP WORKING")
+    //         }
+    //     }
+    // }
 
     for (let row = 0; row < p2_gameboard.getSize()[1]; row++) { //row iteration y
         for (let col = 0; col < p2_gameboard.getSize()[0]; col++) { // cell iteration x 
