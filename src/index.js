@@ -15,6 +15,8 @@ const testingFunc = function(){
     //randomly generate ship placement for player 2 gameboard
     p2.cpuGenShipPlacement(p2gb);
 
+    genBoardDisplay("p1");
+    genBoardDisplay("p2");
     genShipPiecesDisplay();
 
     const flipShipAxis = () => {
@@ -34,12 +36,12 @@ const testingFunc = function(){
     }
     flipShipAxis();
 
-    renderDragItems();
+    renderDragItems(); //render ship dragging
 
-    renderDragOnTables("p1", p1gb);
+    renderDragOnTables("p1", p1gb); //render hover effect for ship dragging on player table
 
 
-    renderTables("p1", p1gb);
+    renderTables("p1", p1gb); // render player1 and player 2 gameboards
     renderTables("p2", p2gb);
 
     let startButton = document.getElementById("start_game");
