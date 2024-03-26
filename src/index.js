@@ -49,6 +49,7 @@ const testingFunc = function(){
         if (p1gb.isAllShipPlaced() == true && p2gb.isAllShipPlaced() == true) {
             loadGame(p1, p2, p1gb, p2gb);
             console.log("GAME STARTS NOW")
+            startButton.innerText = "END GAME"
         }
         else {
             console.log("NOT ALL SHIPS ARE PLACED")
