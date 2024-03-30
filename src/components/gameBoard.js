@@ -1,4 +1,7 @@
 import Ship from "./ship";
+import hitSound from "../game/soundEffects/hit.ogg";
+import missSound from "../game/soundEffects/miss.ogg";
+import errorSound from "../game/soundEffects/error.ogg";
 
 const gameBoard = (cols, rows) => {
     let _cols = cols;
@@ -56,10 +59,14 @@ const gameBoard = (cols, rows) => {
             }
             else {                                            //don't place ship on board, print error
                 if (unusedTiles == false) {
-                    console.log('PICK SOMEWHERE ELSE, TILES ARE ALREADY USED')
+                    // console.log('PICK SOMEWHERE ELSE, TILES ARE ALREADY USED')
+                    const errorSFX = new Audio(errorSound);
+                    errorSFX.play();
                 }
                 if (enoughTiles == false) {
-                    console.log('PICK SOMEHWERE ELSE, NOT ENOUGH TILES!')
+                    // console.log('PICK SOMEHWERE ELSE, NOT ENOUGH TILES!')
+                    const errorSFX = new Audio(errorSound);
+                    errorSFX.play();
                 }
                 return false;
             }
@@ -87,10 +94,14 @@ const gameBoard = (cols, rows) => {
             }
             else {
                 if (unusedTiles == false) {
-                    console.log('PICK SOMEWHERE ELSE, TILES ARE ALREADY USED')
+                    // console.log('PICK SOMEWHERE ELSE, TILES ARE ALREADY USED')
+                    const errorSFX = new Audio(errorSound);
+                    errorSFX.play();
                 }
                 if (enoughTiles == false) {
-                    console.log('PICK SOMEHWERE ELSE, NOT ENOUGH TILES!')
+                    // console.log('PICK SOMEHWERE ELSE, NOT ENOUGH TILES!')
+                    const errorSFX = new Audio(errorSound);
+                    errorSFX.play();
                 }
                 return false;
             }
@@ -133,16 +144,26 @@ const gameBoard = (cols, rows) => {
                 _missAttacks++;                                 //update missed attack count
                 console.log('the missile missed.')
                 console.log(`amount of missed attacks: ${_missAttacks}`)
+
+                //RENDER MISSED SOUND
+                const missSFX = new Audio(missSound);
+                missSFX.play();
+
             } else {                                            //if tile has ship
                 _board[rowNum][colNum].tileAttacked = true;   //update tile hit status
                 ships[_board[rowNum][colNum].shipType].isHit();   //add hit damage to ship on tile
+
+                //RENDER HIT SOUND
+                const hitSFX = new Audio(hitSound);
+                hitSFX.play();
+
                 if (ships[_board[rowNum][colNum].shipType].isSunk()) {   //check/ if ship is sunk
                     _sunkenShips++;                                         //increment sunken ships
-                    console.log(_board[rowNum][colNum].shipType)
-                    console.log(_sunkenShips)
-                    console.log(`${_board[rowNum][colNum].shipType} HAS SUNK`)
+                    // console.log(_board[rowNum][colNum].shipType)
+                    // console.log(_sunkenShips)
+                    // console.log(`${_board[rowNum][colNum].shipType} HAS SUNK`)
                 }
-                console.log('the missile hit a ship!')
+
             }
             return true;
         } else {

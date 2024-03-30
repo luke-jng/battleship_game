@@ -11,8 +11,9 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
                 if (player1.checkIfTurn() == true) {
                     if (player1.attack(row, col, p2_gameboard) == true) { //PLAYER 1 ENACTS VALID ATTACK
                         //PLAY ATTACK SOUND
-                        const hitSFX = new Audio(hitSound);
-                        hitSFX.play();
+                        // const hitSFX = new Audio(hitSound);
+                        // hitSFX.play();
+                        
                         //RENDER ATTACK ON PLAYER 2 BOARD
                         renderTables("p2", p2_gameboard);
                         //UPDATE TURN 
@@ -42,8 +43,8 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
                 player2.cpuAttack(p1_gameboard);
 
                 //PLAY ATTACK SOUND
-                const hitSFX = new Audio(hitSound);
-                hitSFX.play();
+                // const hitSFX = new Audio(hitSound);
+                // hitSFX.play();
 
                 //RENDER ATTACK ON PLAYER 1 BOARD
                 renderTables("p1", p1_gameboard); 
