@@ -16,10 +16,10 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
                         player1.updateTurn();
                         player2.updateTurn();
                     } else {
-                        console.log("TRY ANOTHER TILE");
+                        console.log("TRY ANOTHER TILE"); //play error sound
                     }
                 } else {
-                    console.log("NOT YOUR TURN, WAIT UNTIL CPU FINISHES TURN!")
+                    console.log("NOT YOUR TURN, WAIT UNTIL CPU FINISHES TURN!") //play error sound
                 }
             })
         }
@@ -42,10 +42,10 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
             } 
         } else {
             if (p1_gameboard.isAllShipSunk() == true) {
-                console.log("PLAYER 2 WINS")
+                console.log("PLAYER 2 WINS") //use status modal to display victory
             }
             if (p2_gameboard.isAllShipSunk() == true) {
-                console.log("PLAYER 1 WINS")
+                console.log("PLAYER 1 WINS") //use status modal to display victory
             }
             console.log("INTERVAL ENDING")
             clearInterval(gameLoop)
