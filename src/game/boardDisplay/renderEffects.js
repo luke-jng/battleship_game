@@ -18,7 +18,7 @@ const renderTables = (playerNum, currentGameBoard) => {
                     tile.style.backgroundColor = "red";
                 }
             }
-            console.log("LOOP WORKING")
+            console.log("RENDER UPDATED TABLE")
         }
     }
 }
