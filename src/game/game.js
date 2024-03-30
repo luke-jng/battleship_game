@@ -10,10 +10,7 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
             currentCell.addEventListener("click", () => {
                 if (player1.checkIfTurn() == true) {
                     if (player1.attack(row, col, p2_gameboard) == true) { //PLAYER 1 ENACTS VALID ATTACK
-                        //PLAY ATTACK SOUND
-                        // const hitSFX = new Audio(hitSound);
-                        // hitSFX.play();
-                        
+
                         //RENDER ATTACK ON PLAYER 2 BOARD
                         renderTables("p2", p2_gameboard);
                         //UPDATE TURN 
@@ -34,17 +31,12 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
     }
 
 
-    // START GAME LOOP(TRY SET INTERVAL INSTEAD OF WHILE LOOP, SO THE CODE DOESN'T TIME OUT)
-    // KEEP THE GAME LOOPING UNTIL A VICTOR IS IDENTIFIED IE ONE OF THE GAMEBOARD'S HAS THEIR SHIPS FULLY SUNK
+    // START GAME LOOP
     const gameLoop = setInterval(() => {
         if (p1_gameboard.isAllShipSunk() == false && p2_gameboard.isAllShipSunk() == false){
             if (player2.checkIfTurn() == true) {
                 //PLAYER 2 RANDOMLY ATTACKS PLAYER 1 GAMEBOARD WITH VALID MOVE
                 player2.cpuAttack(p1_gameboard);
-
-                //PLAY ATTACK SOUND
-                // const hitSFX = new Audio(hitSound);
-                // hitSFX.play();
 
                 //RENDER ATTACK ON PLAYER 1 BOARD
                 renderTables("p1", p1_gameboard); 

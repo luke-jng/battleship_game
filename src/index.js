@@ -46,14 +46,20 @@ const testingFunc = function(){
 
     let startButton = document.getElementById("start_game");
     startButton.addEventListener("click", ()=>{
-        if (p1gb.isAllShipPlaced() == true && p2gb.isAllShipPlaced() == true) {
-            loadGame(p1, p2, p1gb, p2gb);
-            console.log("GAME STARTS NOW")
-            startButton.innerText = "END GAME"
+        if (startButton.dataset.state == "start") {
+            if (p1gb.isAllShipPlaced() == true && p2gb.isAllShipPlaced() == true) {
+                loadGame(p1, p2, p1gb, p2gb);
+                console.log("GAME STARTS NOW")
+                startButton.innerText = "END GAME";
+                startButton.dataset.state = "end";
+            }
+            else {
+                console.log("NOT ALL SHIPS ARE PLACED")
+            }
+        } else {
+            location.reload();
         }
-        else {
-            console.log("NOT ALL SHIPS ARE PLACED")
-        }
+
     })
     
     console.log("hello world")
