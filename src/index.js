@@ -4,8 +4,9 @@ import gameBoard from "./components/gameBoard";
 import loadGame from "./game/game";
 import { renderDragItems, renderDragOnTables, renderTables } from "./game/boardDisplay/renderEffects";
 import { genBoardDisplay, genShipPiecesDisplay } from "./game/boardDisplay/genDisplay";
-import { endGameModal } from "./game/boardDisplay/modalPopups";
+import { endGameModal } from "./game/gameStatus/modalPopups";
 import errorSound from "./game/soundEffects/error.ogg"
+import { updateInfoToSetUpGame, updateInfoToPlayerTurn } from "./game/gameStatus/gameInfo";
 
 const setupGame = function(){
     let p1 = Player(true, false); // actual player and has turn
@@ -15,6 +16,7 @@ const setupGame = function(){
 
     //randomly generate ship placement for player 2 gameboard
     p2.cpuGenShipPlacement(p2gb);
+    p2gb.printBoard(); // print cpu board for debugging
 
     genBoardDisplay("p1");
     genBoardDisplay("p2");
@@ -42,6 +44,7 @@ const setupGame = function(){
     renderDragOnTables("p1", p1gb); //render hover effect for ship dragging on player table
 
 
+    updateInfoToSetUpGame();
     renderTables("p1", p1gb); // render player1 and player 2 gameboards
     renderTables("p2", p2gb);
 
@@ -49,14 +52,16 @@ const setupGame = function(){
     startButton.addEventListener("click", ()=>{
         if (startButton.dataset.state == "start") {
             if (p1gb.isAllShipPlaced() == true && p2gb.isAllShipPlaced() == true) {
+                updateInfoToPlayerTurn();
                 loadGame(p1, p2, p1gb, p2gb);
-                console.log("GAME STARTS NOW")
+                // updateInfoToPlayerTurn();
+                // console.log("GAME STARTS NOW")
                 startButton.innerText = "END GAME";
                 startButton.dataset.state = "end";
             }
-            else {
-                console.log("NOT ALL SHIPS ARE PLACED")
-            }
+            // else {
+            //     console.log("NOT ALL SHIPS ARE PLACED")
+            // }
         } else {
             endGameModal();
         }

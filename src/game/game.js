@@ -1,7 +1,8 @@
 import { renderTables } from "./boardDisplay/renderEffects";
 import hitSound from "./soundEffects/hit.ogg";
 import errorSound from "./soundEffects/error.ogg"
-import { victoryModal, defeatModal } from "./boardDisplay/modalPopups";
+import { victoryModal, defeatModal } from "./gameStatus/modalPopups";
+import { updateInfoToCPUTurn, updateInfoToPlayerTurn } from "./gameStatus/gameInfo";
 
 const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
 
@@ -17,6 +18,7 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
                         //UPDATE TURN 
                         player1.updateTurn();
                         player2.updateTurn();
+                        updateInfoToCPUTurn();
                     } else {
                         //PLAY ERROR SOUND
                         const errorSFX = new Audio(errorSound);
@@ -45,6 +47,7 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
                 //UPDATE TURN
                 player2.updateTurn();
                 player1.updateTurn();
+                updateInfoToPlayerTurn();
             } 
         } else { //A PLAYER'S SHIPS HAVE ALL SUNK
             if (p1_gameboard.isAllShipSunk() == true) {
