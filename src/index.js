@@ -4,9 +4,10 @@ import gameBoard from "./components/gameBoard";
 import loadGame from "./game/game";
 import { renderDragItems, renderDragOnTables, renderTables } from "./game/boardDisplay/renderEffects";
 import { genBoardDisplay, genShipPiecesDisplay } from "./game/boardDisplay/genDisplay";
+import { endGameModal } from "./game/boardDisplay/modalPopups";
+import errorSound from "./game/soundEffects/error.ogg"
 
-
-const testingFunc = function(){
+const setupGame = function(){
     let p1 = Player(true, false); // actual player and has turn
     let p2 = Player(false, true); // cpu and does not have turn
     let p1gb = gameBoard(10, 10);
@@ -57,15 +58,13 @@ const testingFunc = function(){
                 console.log("NOT ALL SHIPS ARE PLACED")
             }
         } else {
-            location.reload();
+            endGameModal();
         }
 
     })
-    
-    console.log("hello world")
 }
 
 
-testingFunc()
+setupGame();
 
 // export {testingFunc}

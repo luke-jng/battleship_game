@@ -1,6 +1,7 @@
 import { renderTables } from "./boardDisplay/renderEffects";
 import hitSound from "./soundEffects/hit.ogg";
 import errorSound from "./soundEffects/error.ogg"
+import { victoryModal, defeatModal } from "./boardDisplay/modalPopups";
 
 const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
 
@@ -48,9 +49,11 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
         } else { //A PLAYER'S SHIPS HAVE ALL SUNK
             if (p1_gameboard.isAllShipSunk() == true) {
                 console.log("PLAYER 2 WINS") //use status modal to display victory
+                defeatModal();
             }
             if (p2_gameboard.isAllShipSunk() == true) {
                 console.log("PLAYER 1 WINS") //use status modal to display victory
+                victoryModal();
             }
             console.log("INTERVAL ENDING")
             clearInterval(gameLoop)
