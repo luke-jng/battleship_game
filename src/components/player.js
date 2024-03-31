@@ -49,7 +49,7 @@ const Player = (turnBool, cpuBool) => {
             console.log(boardSize[0], boardSize[1])
             let randomXCoord = Math.floor(Math.random() * boardSize[0]);
             let randomYCoord = Math.floor(Math.random() * boardSize[1]);
-            console.log(randomXCoord, randomYCoord);
+            console.log("this is for ship placementof ", availableShips[s], randomXCoord, randomYCoord);
             let randomAxis = Math.floor(Math.random() * axises.length)
             while (targetGameBoard.placeShip(randomXCoord, randomYCoord, availableShips[s], axises[randomAxis]) == false) {
                 randomXCoord = Math.floor(Math.random() * boardSize[0]);

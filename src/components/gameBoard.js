@@ -42,7 +42,7 @@ const gameBoard = (cols, rows) => {
             let enoughTiles = false; //there should be enough tiles to place the entire length of the ship
             if (col + ships[shipType].getShipLength() - 1 < _cols) { // check if enough tiles to place ship length, ie doesnt break column bounds
                 enoughTiles = true;
-                let endCol = col + ships[shipType].getShipLength() -1
+                let endCol = col + ships[shipType].getShipLength() - 1;
                 for (let currCol = col; currCol < endCol; currCol++) { // check each tiles to see if its taken
                     let currTile = _board[row][currCol];
                     if (currTile.shipType != 'None') {
