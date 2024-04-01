@@ -24,13 +24,13 @@ const Player = (turnBool, cpuBool) => {
             // generate random coords for attack
             let boardSize = targetGameBoard.getSize();
             console.log(boardSize[0], boardSize[1])
-            let randomXCoord = Math.floor(Math.random() * boardSize[0]);
-            let randomYCoord = Math.floor(Math.random() * boardSize[1]);
-            console.log(randomXCoord, randomYCoord);
-            while (targetGameBoard.receiveAttack(randomXCoord, randomYCoord) == false) { //if attack is not legal
+            let randomRow = Math.floor(Math.random() * boardSize[0]);
+            let randomCol = Math.floor(Math.random() * boardSize[1]);
+            console.log(randomCol, randomRow);
+            while (targetGameBoard.receiveAttack(randomRow, randomCol) == false) { //if attack is not legal
                 // randomize attack coords again
-                randomXCoord = Math.floor(Math.random() * boardSize[0]);
-                randomYCoord = Math.floor(Math.random() * boardSize[1]);
+                randomCol = Math.floor(Math.random() * boardSize[0]);
+                randomRow = Math.floor(Math.random() * boardSize[1]);
                 // loop will iterate until receveAttack returns true and breaks
             }
         } else {
@@ -47,16 +47,16 @@ const Player = (turnBool, cpuBool) => {
             // generate random coords for ship placement
             let boardSize = targetGameBoard.getSize();
             console.log(boardSize[0], boardSize[1])
-            let randomXCoord = Math.floor(Math.random() * boardSize[0]);
-            let randomYCoord = Math.floor(Math.random() * boardSize[1]);
-            console.log("this is for ship placementof ", availableShips[s], randomXCoord, randomYCoord);
+            let randomCol = Math.floor(Math.random() * boardSize[0]);
+            let randomRow = Math.floor(Math.random() * boardSize[1]);
+            console.log("this is for ship placementof ", availableShips[s], randomCol, randomRow);
             let randomAxis = Math.floor(Math.random() * axises.length)
-            while (targetGameBoard.placeShip(randomXCoord, randomYCoord, availableShips[s], axises[randomAxis]) == false) {
-                randomXCoord = Math.floor(Math.random() * boardSize[0]);
-                randomYCoord = Math.floor(Math.random() * boardSize[1]);
+            while (targetGameBoard.placeShip(randomCol, randomRow, availableShips[s], axises[randomAxis]) == false) {
+                randomCol = Math.floor(Math.random() * boardSize[0]);
+                randomRow = Math.floor(Math.random() * boardSize[1]);
                 randomAxis = Math.floor(Math.random() * axises.length)
             }
-            console.log(`${availableShips[s]} is set on ${randomXCoord}, ${randomYCoord}`)
+            console.log(`${availableShips[s]} is set on ${randomCol}, ${randomRow}`)
         }
     }
 
