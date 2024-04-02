@@ -38,16 +38,20 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
     const gameLoop = setInterval(() => {
         if (p1_gameboard.isAllShipSunk() == false && p2_gameboard.isAllShipSunk() == false){
             if (player2.checkIfTurn() == true) {
-                //PLAYER 2 RANDOMLY ATTACKS PLAYER 1 GAMEBOARD WITH VALID MOVE
-                player2.cpuAttack(p1_gameboard);
+                setTimeout(()=>{ //SET TIME OUT TO GIVE ILLUSION THAT CPU IS CONSIDERING MOVES
 
-                //RENDER ATTACK ON PLAYER 1 BOARD
-                renderTables("p1", p1_gameboard); 
+                    //PLAYER 2 RANDOMLY ATTACKS PLAYER 1 GAMEBOARD WITH VALID MOVE
+                    player2.cpuAttack(p1_gameboard);
 
-                //UPDATE TURN
-                player2.updateTurn();
-                player1.updateTurn();
-                updateInfoToPlayerTurn();
+                    //RENDER ATTACK ON PLAYER 1 BOARD
+                    renderTables("p1", p1_gameboard); 
+
+                    //UPDATE TURN
+                    player2.updateTurn();
+                    player1.updateTurn();
+                    updateInfoToPlayerTurn();
+                }, 3000); //INTERVAL SHOULD BE LESS THAN GAMELOOP INTERVAL, OR ELSE THE CPU WILL MAKE MULTIPLE TURNS WITHOUT STOPPING FOR PLAYER
+
             } 
         } else { //A PLAYER'S SHIPS HAVE ALL SUNK
             if (p1_gameboard.isAllShipSunk() == true) {
@@ -61,7 +65,7 @@ const loadGame = (player1, player2, p1_gameboard, p2_gameboard) => {
             console.log("INTERVAL ENDING")
             clearInterval(gameLoop)
         }
-    }, 3000)
+    }, 4000)
 }
 
 

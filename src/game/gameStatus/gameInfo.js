@@ -17,12 +17,39 @@ const updateGameInfo = (currentInfo_headText, currentInfo_subText) => {
     )
 }
 
+let _intervalHolder = null;
+let _periodCounter = 0;
+
+const textLoop = () => {
+    let currentSubText = document.getElementById("turn_subtext");
+    
+    if (_periodCounter < 3) {
+        currentSubText.innerText += ".";
+        _periodCounter++;
+    } else {
+        currentSubText.innerText = "CPU is thinking."
+        _periodCounter = 0;
+    }
+    console.log("text is looping!")
+}
+
+const startCPUSubTextLoop = () => {
+    _intervalHolder = setInterval(textLoop, 1000);
+}
+
+const stopCPUSubTextLoop = () => {
+    clearInterval(_intervalHolder);
+    _intervalHolder = null;
+}
+
 const updateInfoToPlayerTurn = () => {
+    stopCPUSubTextLoop();
     updateGameInfo("Player's Turn", "Please make a move.");
 }
 
 const updateInfoToCPUTurn = () => {
-    updateGameInfo("CPU's Turn", "Please wait for the CPU to make a move.")
+    updateGameInfo("CPU's Turn", "CPU is thinking.")
+    startCPUSubTextLoop();
 }
 
 const updateInfoToSetUpGame = () => {
