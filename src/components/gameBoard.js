@@ -37,6 +37,7 @@ const gameBoard = (cols, rows) => {
     let _missAttacks = 0;
 
     const placeShip = (col, row, shipType, axis) => {
+        printBoard();
         if ( axis == 'horizontal' ) {
             let unusedTiles = true; //all of the tiles that the ship wants to be placed on should not be taken
             let enoughTiles = false; //there should be enough tiles to place the entire length of the ship
@@ -118,7 +119,24 @@ const gameBoard = (cols, rows) => {
             for (const tile of row) {
                 if (tile.shipType != 'None') {  // if tile occupied by ship
                     if (!tile.tileAttacked) {   // if tile not hit, push [S]
-                        currRow.push('[S]');
+                        switch(tile.shipType) {
+                            case "battleship":
+                                currRow.push('[B]');
+                                break;
+                            case "carrier":
+                                currRow.push('[C]');
+                                break;
+                            case "cruiser":
+                                currRow.push('[c]');
+                                break;
+                            case "patrolBoat":
+                                currRow.push('[p]');
+                                break;
+                            case "submarine":
+                                currRow.push('[S]')
+                                break;
+                        }
+                        // currRow.push('[S]');
                     } else {                    // if tile hit, push [H]
                         currRow.push('[H]');
                     }
