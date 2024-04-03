@@ -4,7 +4,7 @@ import gameBoard from "./components/gameBoard";
 import loadGame from "./game/game";
 import { renderDragItems, renderDragOnTables, renderTables } from "./game/boardDisplay/renderEffects";
 import { genBoardDisplay, genShipPiecesDisplay } from "./game/boardDisplay/genDisplay";
-import { endGameModal } from "./game/gameStatus/modalPopups";
+import { endGameModal, rulesModal } from "./game/gameStatus/modalPopups";
 import errorSound from "./game/soundEffects/error.ogg"
 import { updateInfoToSetUpGame, updateInfoToPlayerTurn } from "./game/gameStatus/gameInfo";
 
@@ -38,6 +38,14 @@ const setupGame = function(){
         })
     }
     flipShipAxis();
+
+    const checkRules = () => {
+        let ruleButton = document.getElementById("check_rules");
+        ruleButton.addEventListener("click", ()=>{
+            rulesModal();
+        })
+    }
+    checkRules();
 
     renderDragItems(); //render ship dragging
 
