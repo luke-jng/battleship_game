@@ -1,3 +1,5 @@
+import placeShipSFX from "../soundEffects/placeShip.ogg"
+
 // renders tables
 const renderTables = (playerNum, currentGameBoard) => {
     let currentTable = document.getElementById(`${playerNum}_gameboard`);
@@ -68,6 +70,8 @@ const renderDragOnTables = (playerNum, currentGameBoard) => {
                 console.log("dropping something on tile:", `${playerNum}_tile${row}${col}`)
                 currentCell.style.borderColor = "white"
                 if (currentGameBoard.placeShip(col, row, dragItem.dataset.shiptype, dragItem.dataset.axis) == true) {
+                    let audio = new Audio(placeShipSFX);
+                    audio.play();
                     renderTables(playerNum, currentGameBoard); //update table display
                     removePlacedShip(dragItem);
                 }
