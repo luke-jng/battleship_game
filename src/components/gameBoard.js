@@ -44,7 +44,8 @@ const gameBoard = (cols, rows) => {
             if (col + ships[shipType].getShipLength() - 1 < _cols) { // check if enough tiles to place ship length, ie doesnt break column bounds
                 enoughTiles = true;
                 let endCol = col + ships[shipType].getShipLength() - 1;
-                for (let currCol = col; currCol < endCol; currCol++) { // check each tiles to see if its taken
+                console.log("THIS IS END COLUMN",endCol);
+                for (let currCol = col; currCol <= endCol; currCol++) { // check each tiles to see if its taken
                     let currTile = _board[row][currCol];
                     if (currTile.shipType != 'None') {
                         unusedTiles = false;
@@ -79,7 +80,9 @@ const gameBoard = (cols, rows) => {
             if (row + ships[shipType].getShipLength() - 1 < _rows) {
                 enoughTiles = true;
                 let endRow = row + ships[shipType].getShipLength() - 1;
-                for (let currRow = row; currRow < endRow; currRow++) {
+                console.log("THIS IS END ROW",endRow);
+
+                for (let currRow = row; currRow <= endRow; currRow++) {
                     let currTile = _board[currRow][col];
                     if (currTile.shipType != 'None') {
                         unusedTiles = false;
