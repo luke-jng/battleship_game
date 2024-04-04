@@ -18,18 +18,19 @@ const genShipPiecesDisplay = () => {
     const genPieceDiv = (piece_id, shipTypeData, divText) => {
         let currPieceDiv = document.createElement("div");
         currPieceDiv.id = `${piece_id}`;
-        currPieceDiv.classList.add("draggable")
+        currPieceDiv.classList.add("ship_piece");
+        currPieceDiv.classList.add("draggable");
         currPieceDiv.setAttribute("draggable", true);
         currPieceDiv.dataset.axis = "horizontal";
         currPieceDiv.dataset.shiptype = `${shipTypeData}`
         currPieceDiv.innerText = divText;
         return currPieceDiv;
     }
-    let battleshipPieceDiv = genPieceDiv("battleship_piece", "battleship", "battleship")
-    let carrierPieceDiv = genPieceDiv("carrier_piece", "carrier", "carrier")
-    let cruiserPieceDiv = genPieceDiv("cruiser_piece", "cruiser", "cruiser")
-    let patrolBoatPieceDiv = genPieceDiv("patrolboat_piece", "patrolBoat", "patrolBoat")
-    let submarinePieceDiv = genPieceDiv("submarine_piece", "submarine", "submarine")
+    let battleshipPieceDiv = genPieceDiv("battleship_piece", "battleship", "battleship");
+    let carrierPieceDiv = genPieceDiv("carrier_piece", "carrier", "carrier");
+    let cruiserPieceDiv = genPieceDiv("cruiser_piece", "cruiser", "cruiser");
+    let patrolBoatPieceDiv = genPieceDiv("patrolboat_piece", "patrolBoat", "patrolBoat");
+    let submarinePieceDiv = genPieceDiv("submarine_piece", "submarine", "submarine");
 
     shipContainer.append(
         battleshipPieceDiv,

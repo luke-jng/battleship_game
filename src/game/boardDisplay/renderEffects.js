@@ -15,7 +15,7 @@ const renderTables = (playerNum, currentGameBoard) => {
             }
             else {
                 if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
-                    tile.style.backgroundColor = "green";
+                    tile.style.backgroundColor = "MediumSeaGreen";
                 } else {
                     tile.style.backgroundColor = "red";
                 }
@@ -51,24 +51,24 @@ const renderDragOnTables = (playerNum, currentGameBoard) => {
             currentCell.addEventListener("dragover", (e)=> {
                 e.preventDefault();
                 console.log("dragging something over tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "black"
+                currentCell.style.borderColor = "red";
             })
             currentCell.addEventListener("dragend", (e)=> {
                 e.preventDefault();
                 console.log("dragging something over tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "white"
+                currentCell.style.borderColor = "gray";
             })
             currentCell.addEventListener("dragleave", (e)=> {
                 e.preventDefault();
                 console.log("dragging something over tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "white"
+                currentCell.style.borderColor = "gray";
             })
             currentCell.addEventListener("drop", (e)=> {
                 e.preventDefault();
                 let dragItem = document.querySelector('.dragging');
                 console.log(dragItem)
                 console.log("dropping something on tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "white"
+                currentCell.style.borderColor = "gray";
                 if (currentGameBoard.placeShip(col, row, dragItem.dataset.shiptype, dragItem.dataset.axis) == true) {
                     let audio = new Audio(placeShipSFX);
                     audio.play();
