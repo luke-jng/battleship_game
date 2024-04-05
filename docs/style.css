@@ -1,5 +1,5 @@
 body {
-    background-color: gray;
+    background-color: #3D454B;
 }
 
 #game_container {
@@ -23,8 +23,14 @@ td:hover {
 
 
 #ships {
-    background-color: aqua;
-    width: 350px;
+    /* background-color: aqua; */
+    border: 2px solid;
+    border-color: #86D789;
+    width: 380px;
+
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .ship_piece {
@@ -89,4 +95,19 @@ td:hover {
 
 .draggable.dragging {
     opacity: 0.3;
+}
+
+button {
+    background-color: #86D789;
+    border-radius: 13px;
+    border: none;
+    width: 85px;
+    height: 28px;
+    font-size: 12px;
+}
+
+button:hover {
+    color: white;
+    width: 95px;
+    height: 32px;;
 }
