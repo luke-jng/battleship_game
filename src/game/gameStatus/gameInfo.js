@@ -34,7 +34,7 @@ const textLoop = () => {
 }
 
 const startCPUSubTextLoop = () => {
-    _intervalHolder = setInterval(textLoop, 1000);
+    _intervalHolder = setInterval(textLoop, 700);
 }
 
 const stopCPUSubTextLoop = () => {
