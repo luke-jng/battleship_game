@@ -1,4 +1,5 @@
 import placeShipSFX from "../soundEffects/placeShip.ogg"
+import {  greenColor, orangeColor, redColor, blackColor, whiteColor } from "./gameColors";
 
 // renders tables
 const renderTables = (playerNum, currentGameBoard) => {
@@ -8,16 +9,16 @@ const renderTables = (playerNum, currentGameBoard) => {
         for (let j = 0, tile; tile = row.cells[j]; j++) {
             if (currentGameBoard.getBoard()[i][j].shipType == "None") {
                 if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
-                    tile.style.backgroundColor = "yellow";
+                    tile.style.backgroundColor = orangeColor;
                 } else {
-                    tile.style.backgroundColor = "black";
+                    tile.style.backgroundColor = blackColor;
                 }
             }
             else {
                 if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
-                    tile.style.backgroundColor = "MediumSeaGreen";
+                    tile.style.backgroundColor = greenColor;
                 } else {
-                    tile.style.backgroundColor = "red";
+                    tile.style.backgroundColor = redColor;
                 }
             }
             console.log("RENDER UPDATED TABLE")
@@ -51,24 +52,24 @@ const renderDragOnTables = (playerNum, currentGameBoard) => {
             currentCell.addEventListener("dragover", (e)=> {
                 e.preventDefault();
                 console.log("dragging something over tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "red";
+                currentCell.style.borderColor = redColor;
             })
             currentCell.addEventListener("dragend", (e)=> {
                 e.preventDefault();
                 console.log("dragging something over tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "gray";
+                currentCell.style.borderColor = blackColor;
             })
             currentCell.addEventListener("dragleave", (e)=> {
                 e.preventDefault();
                 console.log("dragging something over tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "gray";
+                currentCell.style.borderColor = blackColor;
             })
             currentCell.addEventListener("drop", (e)=> {
                 e.preventDefault();
                 let dragItem = document.querySelector('.dragging');
                 console.log(dragItem)
                 console.log("dropping something on tile:", `${playerNum}_tile${row}${col}`)
-                currentCell.style.borderColor = "gray";
+                currentCell.style.borderColor = blackColor;
                 if (currentGameBoard.placeShip(col, row, dragItem.dataset.shiptype, dragItem.dataset.axis) == true) {
                     let audio = new Audio(placeShipSFX);
                     audio.play();

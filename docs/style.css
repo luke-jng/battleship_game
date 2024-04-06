@@ -1,5 +1,6 @@
 body {
-    background-color: #3D454B;
+    /* background-color: #3D454B; */
+    background-color: #181818;
 }
 
 #game_container {
@@ -7,28 +8,33 @@ body {
     width: fit-content;
 }
 
-table, th, td {
-    border: 2px solid gray;
+table {
+    margin: auto;
+    border: 3px solid #B2653B;
+}
+th, td {
+    border: 2px solid #181818;
+    /* margin: auto; */
 }
 
 td {
-    height: 30px;
-    width: 30px;
+    height: 31px;
+    width: 31px;
 
 }
 
 td:hover {
-    border: 2px solid red;
+    border: 1px dashed #802520;
 }
 
 
 #ships {
     /* background-color: aqua; */
-    border: 2px solid;
-    border-color: #86D789;
+    border: 3px dashed;
+    border-color: #5C7F71;
     width: 380px;
 
-    border-radius: 5px;
+    /* border-radius: 5px; */
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -36,6 +42,21 @@ td:hover {
 .ship_piece {
     padding: 10px;
     margin: 10px;
+
+    /* text style and color */
+    color: #F5EDDC;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: 15px;
+
+}
+
+.ship_piece:hover {
+    font-size: smaller;
+    color: #181818;
+    box-shadow: 50px 0px #B2653B;
 }
 
 #battleship_piece {
@@ -90,7 +111,7 @@ td:hover {
 }
 
 .draggable {
-    background-color: green;
+    background-color: #5C7F71;
 }
 
 .draggable.dragging {
@@ -98,16 +119,48 @@ td:hover {
 }
 
 button {
-    background-color: #86D789;
-    border-radius: 13px;
+    background-color: #B2653B;
+    color: #F5EDDC;
+
+    text-align: left;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
     border: none;
-    width: 85px;
-    height: 28px;
-    font-size: 12px;
+    width: 111px;
+    /* padding-left: 10px; */
+    margin-right: 3px;
+
+    
 }
 
 button:hover {
-    color: white;
-    width: 95px;
-    height: 32px;;
+    /* color: white; */
+    font-size: smaller;
+    color: #181818;
+    width: 125px;
+    height: 45px;;
+}
+
+#game_info {
+    color: #F5EDDC;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+#turn_text {
+    text-transform: uppercase;
+}
+
+#status_modal {
+    width: 500px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
+    background-color: #F5EDDC;
+    color: #181818;
 }
