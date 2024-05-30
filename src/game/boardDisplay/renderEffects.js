@@ -15,9 +15,12 @@ const renderTables = (playerNum, currentGameBoard) => {
                 }
             }
             else {
-                if (currentGameBoard.getBoard()[i][j].tileAttacked == false) {
+                if (currentGameBoard.getBoard()[i][j].tileAttacked == false && playerNum == "p1") {
                     tile.style.backgroundColor = greenColor;
-                } else {
+                } else if (currentGameBoard.getBoard()[i][j].tileAttacked == false && playerNum == "p2"){
+                    tile.style.backgroundColor = orangeColor;
+                }
+                else {
                     tile.style.backgroundColor = redColor;
                 }
             }
