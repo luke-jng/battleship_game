@@ -190,3 +190,17 @@ footer {
 #contact_column {
     margin-right: 50px;
 }
+
+ul {
+    list-style: none;
+    padding: 0; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color:#181818;
+}
