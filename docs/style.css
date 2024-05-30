@@ -164,3 +164,29 @@ button:hover {
     background-color: #F5EDDC;
     color: #181818;
 }
+
+footer {
+    margin-top: 100px;
+    background-color: #B2653B;
+}
+
+#footer_container {
+    
+    color:#F5EDDC;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#project_column {
+    width: 250px;
+    margin-left: 50px;
+}
+
+#contact_column {
+    margin-right: 50px;
+}
